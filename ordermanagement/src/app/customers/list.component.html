@@ -1,0 +1,36 @@
+<h1>Order Details</h1>
+<a routerLink="addUser" class="btn btn-sm btn-success mb-2">Add Customer</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>quantity</th>
+            <th>product_id</th>
+            <th>orderId</th>
+            <th>orderDate</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.quantity}}</td>
+            <td>{{customer.product_id}}</td>
+            <td>{{customer.orderId}}</td>
+            <td>{{customer.orderDate}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{customer.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteUser(customer.id)" class="btn btn-sm btn-danger btn-delete-user">                   
+                    <span>Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!customers">
+            <td colspan="12" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

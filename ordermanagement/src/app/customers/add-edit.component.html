@@ -1,0 +1,49 @@
+﻿<h1 *ngIf="isAddMode">Add Customer</h1>
+<h1 *ngIf="!isAddMode">Edit Customer</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col-6">
+            <label>Customer Name</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Customer Name is required</div>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <label>Order Quantity</label>
+            <input type="text" formControlName="quantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }" />
+            <div *ngIf="submitted && f.quantity.errors" class="invalid-feedback">
+                <div *ngIf="f.quantity.errors.required">Quantity is required</div>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <label>Product id</label>
+            <input type="text" formControlName="product_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.product_id.errors }" />
+            <div *ngIf="submitted && f.product_id.errors" class="invalid-feedback">
+                <div *ngIf="f.product_id.errors.required">Product id is required</div>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <label>Order Id</label>
+            <input type="text" formControlName="orderId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.orderId.errors }" />
+            <div *ngIf="submitted && f.orderId.errors" class="invalid-feedback">
+                <div *ngIf="f.orderId.errors.required">Product id is required</div>
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <label>Order Date</label>
+            <input type="date" formControlName="orderDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.orderDate.errors }" />
+            <div *ngIf="submitted && f.orderDate.errors" class="invalid-feedback">
+                <div *ngIf="f.orderDate.errors.required">orderDate id is required</div>
+            </div>
+        </div>
+    </div>
+     
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/customer" class="btn btn-link">Cancel</a>
+    </div>
+</form>
